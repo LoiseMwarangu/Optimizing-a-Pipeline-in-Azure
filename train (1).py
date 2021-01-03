@@ -17,7 +17,7 @@ from azureml.core import Dataset
 # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
 
 ds = Dataset.Tabular.from_delimited_files(path = [ "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"])
-ds.to_pandas_dataframe()
+df = ds.to_pandas_dataframe()
 
 x, y = clean_data(ds)
 
@@ -25,7 +25,7 @@ x, y = clean_data(ds)
 
 # ## YOUR CODE HERE ###a
 
-
+x_train, x_test = train_test_split(df, test_size=0.2,random_state=223)
 
 run = Run.get_context()
 
